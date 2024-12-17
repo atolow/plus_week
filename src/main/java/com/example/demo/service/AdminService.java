@@ -24,6 +24,5 @@ public class AdminService {
         if (updateRow != userIds.size()) {
             throw new IllegalArgumentException("존재하지 않는 userId가 포함되어 있습니다.");
         }
-
     }
 }
