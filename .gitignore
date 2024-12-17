@@ -20,6 +20,7 @@ bin/
 ### IntelliJ IDEA ###
 application-setting.properties
 
+
 .idea
 *.iws
 *.iml
