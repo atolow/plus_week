@@ -2,10 +2,13 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 
 @Entity
 @Getter
+@DynamicInsert
 // TODO: 6. Dynamic Insert
 public class Item {
     @Id
@@ -16,14 +19,14 @@ public class Item {
 
     private String description;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "owner_id")
     private User owner;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "manager_id")
     private User manager;
-
+    @ColumnDefault("'PENDING'")
     @Column(nullable = false, columnDefinition = "varchar(20) default 'PENDING'")
     private String status;
 

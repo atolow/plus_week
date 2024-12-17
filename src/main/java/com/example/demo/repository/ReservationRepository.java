@@ -19,6 +19,18 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
 
     List<Reservation> findByItemId(Long itemId);
 
+
+    @Query("SELECT r FROM Reservation r " +
+            "JOIN FETCH r.item ri " +
+            "JOIN FETCH r.user ")
+    List<Reservation> findByIdWithFetchJoin();
+
+    default Reservation findByIdOrElseThrow(Long id) {
+        return findById(id).orElseThrow(
+                () -> new IllegalStateException("존재하지 않는 예약입니다")
+        );
+    }
+
     @Query("SELECT r FROM Reservation r " +
             "WHERE r.item.id = :id " +
             "AND NOT (r.endAt <= :startAt OR r.startAt >= :endAt) " +
@@ -28,4 +40,7 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
             @Param("startAt") LocalDateTime startAt,
             @Param("endAt") LocalDateTime endAt
     );
+
+
+
 }

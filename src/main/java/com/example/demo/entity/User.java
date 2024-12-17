@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import org.hibernate.annotations.ColumnDefault;
 
 @Entity
 @Getter
@@ -13,7 +14,8 @@ public class User {
     private String email;
     private String nickname;
     private String password;
-    private String status; // NORMAL, BLOCKED
+    @ColumnDefault("'NORMAL'")
+    private String status ="NORMAL"; // NORMAL, BLOCKED
 
     @Enumerated(value = EnumType.STRING)
     private Role role = Role.USER;
