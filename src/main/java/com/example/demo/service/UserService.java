@@ -33,6 +33,7 @@ public class UserService {
                 saved.getRole());
     }
 
+
     public Authentication loginUser(LoginRequestDto loginRequestDto) {
         User user = userRepository.findByEmail(loginRequestDto.getEmail());
         if (user == null || !PasswordEncoder.matches(loginRequestDto.getPassword(), user.getPassword())) {

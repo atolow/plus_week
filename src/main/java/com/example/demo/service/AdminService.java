@@ -18,7 +18,6 @@ public class AdminService {
     // TODO: 4. find or save 예제 개선
     @Transactional
     public void reportUsers(List<Long> userIds) {
-
         int updateRow = userRepository.updateStatusToBlocked(userIds);
 
         if (updateRow != userIds.size()) {
