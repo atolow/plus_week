@@ -30,7 +30,7 @@ public class UserService {
         return new UserResponseDto(
                 saved.getEmail(),
                 saved.getNickname(),
-                saved.getStatus());
+                saved.getRole());
     }
 
     public Authentication loginUser(LoginRequestDto loginRequestDto) {

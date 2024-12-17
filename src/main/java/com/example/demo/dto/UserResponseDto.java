@@ -1,5 +1,6 @@
 package com.example.demo.dto;
 
+import com.example.demo.entity.Role;
 import lombok.Getter;
 
 @Getter
@@ -9,9 +10,9 @@ public class UserResponseDto {
     private String role;
 
 
-    public UserResponseDto(String email, String nickname, String role) {
+    public UserResponseDto(String email, String nickname, Role role) {
         this.email = email;
         this.nickname = nickname;
-        this.role = role;
+        this.role = String.valueOf(role);
     }
 }
