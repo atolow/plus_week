@@ -30,6 +30,7 @@ public class UserController {
 
     }
 
+
     @PostMapping("/login")
     public String loginWithEmail(@RequestBody LoginRequestDto loginRequestDto, HttpServletRequest request) {
         Authentication authentication = userService.loginUser(loginRequestDto);
